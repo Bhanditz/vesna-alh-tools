@@ -10,14 +10,14 @@ def ism_24ghz(time_start, nodef):
 
 	return MultiNodeSpectrumSensingRun(
 			# [nodef(2), nodef(6), nodef(4)],
-			[ nodef(2)],
+			[ nodef(2), nodef(3)],
 			time_start = time_start,
 			time_duration = 20,
 			device = 0,
 			config = 0,
 			ch_start = 0,
 			ch_step = 1,
-			ch_stop = 255,
+			ch_stop = 120,
 			slot_id = 6)
 
 def uhf_multiplex(time_start, nodef):
