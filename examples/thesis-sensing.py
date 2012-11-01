@@ -8,44 +8,38 @@ import sys
 import time
 
 def ism_24ghz(time_start, nodef):
-	SignalGenerationRun(
-			nodef(2),
-			time_start = time_start + 5.0,
-			time_duration = 50,
-			device_id = 0,
-			config_id = 0,
-			channel = 55,
-			power = 0).program()
-
+	# cognitive terminal, default frequency
 	SignalGenerationRun(
 			nodef(17),
 			time_start = time_start + 5.0,
-			time_duration = 50,
+			time_duration = 25,
 			device_id = 0,
 			config_id = 0,
-			channel = 105,
-			power = 0).program()
-	
-	SignalGenerationRun(
-			nodef(24),
-			time_start = time_start + 5.0,
-			time_duration = 50,
-			device_id = 0,
-			config_id = 0,
-			channel = 155,
+			channel = 110,
 			power = 0).program()
 
+	# cognitive terminal, moved frequency
 	SignalGenerationRun(
-			nodef(26),
-			time_start = time_start + 5.0,
-			time_duration = 50,
+			nodef(17),
+			time_start = time_start + 35.0,
+			time_duration = 20,
 			device_id = 0,
 			config_id = 0,
-			channel = 205,
+			channel = 225,
+			power = 0).program()
+	
+	# non-cognitive terminal's frequency
+	SignalGenerationRun(
+			nodef(2),
+			time_start = time_start + 25.0,
+			time_duration = 30,
+			device_id = 0,
+			config_id = 0,
+			channel = 111,
 			power = 0).program()
 
 	return MultiNodeSpectrumSensingRun(
-			[nodef(25), nodef(6), nodef(4)],
+			[nodef(4), nodef(6), nodef(24), nodef(25), nodef(26) ],
 			time_start = time_start,
 			time_duration = 60,
 			device_id = 0,
@@ -53,7 +47,7 @@ def ism_24ghz(time_start, nodef):
 			ch_start = 0,
 			ch_step = 1,
 			ch_stop = 255,
-			slot_id = 5)
+			slot_id = 6)
 	
 def uhf_multiplex(time_start, nodef):
 	return MultiNodeSpectrumSensingRun(
@@ -144,9 +138,9 @@ def main():
 	
 	time_start = time.time() + 15
 
-	#experiment = ism_24ghz(time_start, nodef)
+	experiment = ism_24ghz(time_start, nodef)
 	#experiment = uhf_multiplex(time_start, nodef)
-	experiment = uhf_wireless_mic(time_start, nodef)
+	#experiment = uhf_wireless_mic(time_start, nodef)
 
 	experiment.program()
 
