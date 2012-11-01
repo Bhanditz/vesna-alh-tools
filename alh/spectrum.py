@@ -212,6 +212,17 @@ class SignalGenerationRun:
 				self.config_id,
 				self.channel,
 				self.power))
+		# debug stuff
+		print "signal generator program:"
+		print "in %d sec for %d sec with dev %d conf %d channel %d power %d" % (
+				relative_time,
+				self.time_duration,
+				self.device_id,
+				self.config_id,
+				self.channel,
+				self.power)
+		if relative_time == 0:
+			print "WARNING: relative time in signal generation is 0"
 
 class MultiNodeSignalGenerationRun:
 	def __init__(self, nodes, *args, **kwargs):
