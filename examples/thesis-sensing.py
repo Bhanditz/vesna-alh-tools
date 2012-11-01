@@ -7,11 +7,11 @@ import string
 import sys
 import time
 
-def ism_24ghz(time_start, nodef):
+def ism_24ghz(time_start_arg, nodef):
 	# cognitive terminal, default frequency
 	SignalGenerationRun(
-			nodef(17),
-			time_start = time_start + 5.0,
+			alh = nodef(17),
+			time_start = time_start_arg + 5.0,
 			time_duration = 25,
 			device_id = 0,
 			config_id = 0,
@@ -20,8 +20,8 @@ def ism_24ghz(time_start, nodef):
 
 	# cognitive terminal, moved frequency
 	SignalGenerationRun(
-			nodef(17),
-			time_start = time_start + 35.0,
+			alh = nodef(17),
+			time_start = time_start_arg + 35.0,
 			time_duration = 20,
 			device_id = 0,
 			config_id = 0,
@@ -30,8 +30,8 @@ def ism_24ghz(time_start, nodef):
 	
 	# non-cognitive terminal's frequency
 	SignalGenerationRun(
-			nodef(2),
-			time_start = time_start + 25.0,
+			alh = nodef(2),
+			time_start = time_start_arg + 25.0,
 			time_duration = 30,
 			device_id = 0,
 			config_id = 0,
@@ -39,8 +39,8 @@ def ism_24ghz(time_start, nodef):
 			power = 0).program()
 
 	return MultiNodeSpectrumSensingRun(
-			[nodef(4), nodef(6), nodef(24), nodef(25), nodef(26) ],
-			time_start = time_start,
+			nodes = [nodef(4), nodef(6), nodef(24), nodef(25), nodef(26) ],
+			time_start = time_start_arg,
 			time_duration = 60,
 			device_id = 0,
 			config_id = 0,
