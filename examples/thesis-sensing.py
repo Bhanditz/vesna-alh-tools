@@ -136,7 +136,7 @@ def main():
 
 		return n
 	
-	time_start = time.time() + 15
+	time_start = time.time() + 45
 
 	experiment = ism_24ghz(time_start, nodef)
 	#experiment = uhf_multiplex(time_start, nodef)
