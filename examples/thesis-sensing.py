@@ -144,6 +144,9 @@ def main():
 
 	experiment.program()
 
+	print "waiting 60s so the experiment can finish"
+	time.sleep(60);
+
 	while not experiment.is_complete():
 		print "waiting..."
 		time.sleep(2)
