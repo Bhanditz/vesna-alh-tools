@@ -84,6 +84,8 @@ def main():
 	
 	for tx_node_nr in node_numbers:
 
+		print "tx_node_nr = ", tx_node_nr
+
 		# copy the list
 		rx_number_list = list(node_numbers)
 		rx_number_list.remove(tx_node_nr)
