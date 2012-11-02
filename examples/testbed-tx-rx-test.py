@@ -55,6 +55,7 @@ def load_auth():
 		print "authentication file open error"
 		return [ "", "" ]
 	pwd_pass_dict = pickle.load(f)
+	f.close()
 	return [pwd_pass_dict['user'], pwd_pass_dict['pwd']]
 
 
