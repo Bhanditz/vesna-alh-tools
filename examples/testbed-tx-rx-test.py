@@ -37,7 +37,7 @@ def test_tx(time_start_arg,
 		rx_nodes.append( nodef(rx_nr))
 
 	return MultiNodeSpectrumSensingRun(
-			nodes = [rx_nodes],
+			nodes = rx_nodes,
 			time_start = time_start_arg,
 			time_duration = 60,
 			device_id = 0,
@@ -66,7 +66,6 @@ def main():
 
 		return n
 	
-	time_start = time.time() + 80
 
 	node_numbers = [ 2, 25 ]
 	
@@ -75,8 +74,14 @@ def main():
 		# copy the list
 		rx_number_list = list(node_numbers)
 		rx_number_list.remove(tx_node_nr)
-		
-		experiment = test_tx(time_start, nodef, tx_node_nr, rx_number_list)
+
+		time_start = time.time() + 80
+
+		experiment = test_tx(
+							time_start_arg=time_start, 
+							nodef=nodef, 
+							tx_node_nr=tx_node_nr, 
+							rx_number_list=rx_number_list)
 
 		experiment.program()
 
@@ -87,9 +92,9 @@ def main():
 			print "waiting..."
 			time.sleep(2)
 
-			print "experiment is finished. retrieving data."
+		print "experiment is finished. retrieving data."
 
-			results = experiment.retrieve()
+		results = experiment.retrieve()
 
 		output_dirname = "data-%d-tx" % (tx_node_nr)
 		for rx_nr in rx_number_list:
