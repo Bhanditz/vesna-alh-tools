@@ -114,8 +114,6 @@ def main():
 
 	# experiment = ism_24ghz(time_start, nodef)
 	experiment = test_n13(time_start, nodef);
-	#experiment = uhf_multiplex(time_start, nodef)
-	#experiment = uhf_wireless_mic(time_start, nodef)
 
 	experiment.program()
 
