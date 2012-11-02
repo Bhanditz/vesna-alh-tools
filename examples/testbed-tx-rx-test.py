@@ -91,11 +91,18 @@ def main():
 
 			results = experiment.retrieve()
 
-		output_dirname = "data-%d-tx" % (tx_node_nr) 
+		output_dirname = "data-%d-tx" % (tx_node_nr)
+		for rx_nr in rx_number_list:
+			output_dirname = output_dirname + "-" + str(rx_nr)
+		output_dirname = output_dirname + "-rx"
+
 		try:
 			os.mkdir(output_dirname)
 		except OSError:
 			pass
 		write_results(output_dirname, results, experiment)
+
+		print "done, waiting 5s"
+		time.sleep(5)
 
 main()
