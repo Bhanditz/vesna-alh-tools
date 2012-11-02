@@ -66,6 +66,7 @@ def main():
 
 		return n
 	
+	extra_wait = 80
 
 	node_numbers = [ 2, 25 ]
 	
@@ -75,7 +76,8 @@ def main():
 		rx_number_list = list(node_numbers)
 		rx_number_list.remove(tx_node_nr)
 
-		time_start = time.time() + 80
+
+		time_start = time.time() + extra_wait
 
 		experiment = test_tx(
 							time_start_arg=time_start, 
@@ -85,8 +87,8 @@ def main():
 
 		experiment.program()
 
-		print "waiting 60s so the experiment can finish"
-		time.sleep(60);
+		print "waiting %d s so the experiment can finish" % (60 + extra_wait)
+		time.sleep(60 + extra_wait);
 
 		while not experiment.is_complete():
 			print "waiting..."
