@@ -47,12 +47,24 @@ def test_tx(time_start_arg,
 			ch_stop = 255,
 			slot_id = 6)
 
+def load_auth():
+	try:
+		f = open("thesis-sensing-auth.pickle", "r")
+	except IOError:
+		print "authentication file open error"
+		return [ "", "" ]
+	pwd_pass_dict = pickle.load(f)
+	return [pwd_pass_dict['user'], pwd_pass_dict['pwd']]
+
 
 def main():
 	#f = serial.Serial("/dev/ttyUSB0", 115200, timeout=10)
 	#coor = alh.ALHTerminal(f)
 
-	coor = alh.ALHWeb("https://crn.log-a-tec.eu/communicator", 10001)
+	[user, pwd] = load_auth()
+
+	coor = alh.ALHWeb("https://%s:%s@crn.log-a-tec.eu/communicator" % ( user, pwd), 
+					10001)
 	coor._log = log
 
 	called = set()
