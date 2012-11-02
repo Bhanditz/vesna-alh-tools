@@ -68,7 +68,7 @@ def main():
 	
 	extra_wait = 80
 
-	node_numbers = [ 2, 25 ]
+	node_numbers = [ 2, 4, 6, 11, 13, 15, 17, 24, 25, 26 ]
 	
 	for tx_node_nr in node_numbers:
 
