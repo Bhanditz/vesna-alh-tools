@@ -6,6 +6,7 @@ import serial
 import string
 import sys
 import time
+import pickle
 
 def test_tx(time_start_arg, 
 			nodef,
