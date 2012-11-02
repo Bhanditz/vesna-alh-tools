@@ -181,7 +181,9 @@ def main():
 	time_start = time.time() + 45
 
 	# experiment = ism_24ghz(time_start, nodef)
-	experiment = test_n13(time_start, nodef);
+	# experiment = test_n13(time_start, nodef)
+	# experiment = test_n11(time_start, nodef)
+	experiment = test_n15(time_start, nodef)
 
 	experiment.program()
 
