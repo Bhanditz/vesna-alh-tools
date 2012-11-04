@@ -7,6 +7,7 @@ import string
 import sys
 import time
 from datetime import datetime
+import pickle
 
 def ism_24ghz(time_start_arg, nodef):
 	# cognitive terminal, default frequency
