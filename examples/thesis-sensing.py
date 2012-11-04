@@ -6,6 +6,7 @@ import serial
 import string
 import sys
 import time
+from datetime import datetime
 
 def ism_24ghz(time_start_arg, nodef):
 	# cognitive terminal, default frequency
@@ -211,7 +212,7 @@ def main():
 	results = experiment.retrieve()
 
 	try:
-		os.mkdir("data")
+		os.mkdir("thesis-data-%s" % (str(datetime.now())) )
 	except OSError:
 		pass
 	write_results("data", results, experiment)
