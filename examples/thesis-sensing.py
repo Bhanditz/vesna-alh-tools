@@ -193,7 +193,9 @@ def nodes_13_25(time_start_arg, nodef):
 			power = 0).program()
 
 	return MultiNodeSpectrumSensingRun(
-			nodes = [nodef(6), nodef(11), nodef(15), nodef(2), nodef(17) ],
+			nodes = [nodef(2), nodef(4), nodef(6), nodef(11),
+					nodef(15), nodef(17), nodef(24),
+					nodef(26) ],
 			time_start = time_start_arg,
 			time_duration = 60,
 			device_id = 0,
