@@ -41,7 +41,7 @@ def ism_24ghz(time_start_arg, nodef):
 			power = 0).program()
 
 	return MultiNodeSpectrumSensingRun(
-			nodes = [nodef(4), nodef(13), nodef(25), nodef(26) ],
+			nodes = [nodef(2), nodef(13), nodef(25), nodef(26) ],
 			time_start = time_start_arg,
 			time_duration = 60,
 			device_id = 0,
