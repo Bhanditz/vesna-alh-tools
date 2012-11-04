@@ -212,10 +212,11 @@ def main():
 
 	results = experiment.retrieve()
 
+	resultdirname = "thesis-data-%s" % (str(datetime.now()))
 	try:
-		os.mkdir("thesis-data-%s" % (str(datetime.now())) )
+		os.mkdir(resultdirname)
 	except OSError:
 		pass
-	write_results("data", results, experiment)
+	write_results(resultdirname, results, experiment)
 
 main()
