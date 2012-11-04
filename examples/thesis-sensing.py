@@ -233,8 +233,10 @@ def main():
 			called.add(addr)
 
 		return n
-	
-	time_start = time.time() + 45
+
+	extra_wait = 80
+
+	time_start = time.time() + extra_wait
 
 	# experiment = ism_24ghz(time_start, nodef)
 	# experiment = test_n13(time_start, nodef)
@@ -244,8 +246,8 @@ def main():
 
 	experiment.program()
 
-	print "waiting 60s so the experiment can finish"
-	time.sleep(60);
+	print "waiting %d s so the experiment can finish" % ( 60 + extra_wait)
+	time.sleep(60 + extra_wait);
 
 	while not experiment.is_complete():
 		print "waiting..."
