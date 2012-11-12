@@ -1,6 +1,6 @@
 from alh import alh
 from alh.spectrum import *
-from alh.common import log
+from alh.common import log, load_auth
 import os
 import serial
 import string
@@ -128,7 +128,13 @@ def main():
 	#f = serial.Serial("/dev/ttyUSB0", 115200, timeout=10)
 	#coor = alh.ALHTerminal(f)
 
-	coor = alh.ALHWeb("https://crn.log-a-tec.eu/communicator", 10001)
+	[user, pwd] = load_auth()
+	if user != "" :
+		url = "https://%s:%s@crn.log-a-tec.eu/communicator" % (user, pwd)
+	else:
+		url = "https://crn.log-a-tec.eu/communicator"
+
+	coor = alh.ALHWeb(url, 10001)
 	coor._log = log
 
 	called = set()
