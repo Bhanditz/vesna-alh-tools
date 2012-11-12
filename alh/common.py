@@ -2,6 +2,7 @@ import alh
 import serial
 import string
 import sys
+import pickle
 
 def add_communication_options(parser):
 	parser.add_option("-U", "--url", dest="url", metavar="URL",
@@ -33,3 +34,22 @@ def get_coordinator(options):
 		coordinator._log = log
 
 	return coordinator
+
+
+def load_auth():
+	'''
+	Try to load authentication information from "auth.pickle".
+	If it succeeds, it returns the user-name and password
+	in a 2-element array.
+	If it fails, a 2-element array of empty string is returned.
+	'''
+	# TODO it would be nice to be able to specify the authentication file name
+	#	from the command line
+	try:
+		f = open("auth.pickle", "r")
+	except IOError as e:
+		print "authentication file open error:", e
+		return [ "", "" ]
+	pwd_pass_dict = pickle.load(f)
+	f.close()
+	return [pwd_pass_dict['user'], pwd_pass_dict['pwd']]
