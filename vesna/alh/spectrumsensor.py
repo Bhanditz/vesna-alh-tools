@@ -85,7 +85,7 @@ class SpectrumSensor:
 
 		time_error = time_after - time_before
 		if time_error > self.MAX_TIME_ERROR:
-			raise Exception("Programming time error %.1f s > %.1fs" % 
+			raise Exception("Programming time error %.1f s > %.1fs" %
 					(time_error, self.MAX_TIME_ERROR))
 
 	def is_complete(self, program):
@@ -161,7 +161,7 @@ class SpectrumSensor:
 			chunk_data = chunk_data_crc[:-4]
 
 			#print "len", len(chunk_data)
-			
+
 			their_crc = struct.unpack("i", chunk_data_crc[-4:])[0]
 			our_crc = binascii.crc32(chunk_data)
 
