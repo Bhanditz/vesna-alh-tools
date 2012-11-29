@@ -144,6 +144,8 @@ class SpectrumSensor:
 		p = 0
 		max_read_size = 512
 		data = ""
+		tries_remaining_count = 3
+
 
 		while p < total_size:
 			chunk_size = min(max_read_size, total_size - p)
@@ -166,11 +168,16 @@ class SpectrumSensor:
 			our_crc = binascii.crc32(chunk_data)
 
 			if(their_crc != our_crc):
-				raise CRCError
+				if(tries_remaining_count > 0):
+					tries_remaining_count -= 1
+				else:
+					raise CRCError
+			else:
+				tries_remaining_count = 3
 
-			data += chunk_data
+				data += chunk_data
 
-			p += max_read_size
+				p += max_read_size
 
 		return self._decode(program, data)
 
